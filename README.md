@@ -103,29 +103,21 @@ migrate -path db/migration -database "postgresql://root:secret@localhost:5432/si
 migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
 ```
 
-## Building and Running the Application
+TODO
+- install sqlc brew install sqlc
+- sqlc init sqlc.yaml is added
+- sqlc generate
+package db
+error parsing queries: path error: stat /Users/murtaza.sajjad/golang_projects/simple_bank/db/query: no such file or directory
 
-### Build the Application
-```bash
-go build -o simple_bank
-```
+so create db/query folder
+and create account account.sql file
 
-### Run the Application
-```bash
-./simple_bank
-```
+now run 	sqlc generate
+it will create 3 files
+models
+db.go
+account sql go
 
-## Additional Commands
-
-### Access PostgreSQL Shell
-```bash
-docker exec -it postgres psql -U root -d simple_bank
-```
-Connects directly to the "simple_bank" database.
-
-### Stop and Remove Container
-```bash
-docker stop postgres
-docker rm postgres
-```
-Stops and removes the PostgreSQL container when no longer needed.
+- then run go mod init github.com/sajjadmurtaza/simple_bank
+- go mod tidy

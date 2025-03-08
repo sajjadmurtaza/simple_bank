@@ -1,0 +1,13 @@
+version: "2"
+sql:
+- schema: "db/migration" # schema directory
+  queries: "db/query" # queries directory
+  engine: "postgresql" # engine
+  gen:
+    go:
+      package: "db" # package name
+      out: "db/sqlc" # output directory
+      emit_json_tags: true # emit json tags
+      emit_interface: true # emit interface
+      emit_empty_slices: true # emit empty slices
+
