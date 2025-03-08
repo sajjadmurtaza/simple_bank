@@ -103,21 +103,47 @@ migrate -path db/migration -database "postgresql://root:secret@localhost:5432/si
 migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
 ```
 
-TODO
-- install sqlc brew install sqlc
-- sqlc init sqlc.yaml is added
-- sqlc generate
-package db
-error parsing queries: path error: stat /Users/murtaza.sajjad/golang_projects/simple_bank/db/query: no such file or directory
+## SQLC Setup
 
-so create db/query folder
-and create account account.sql file
+### 1. Install SQLC
+```bash
+brew install sqlc
+```
 
-now run 	sqlc generate
-it will create 3 files
-models
-db.go
-account sql go
+### 2. Initialize SQLC Configuration
+```bash
+sqlc init
+```
+This creates a `sqlc.yaml` configuration file in your project.
 
-- then run go mod init github.com/sajjadmurtaza/simple_bank
-- go mod tidy
+### 3. Create Query Directory
+```bash
+mkdir -p db/query
+```
+
+### 4. Create SQL Query Files
+Create SQL query files in the `db/query` directory. For example:
+```bash
+touch db/query/account.sql
+```
+
+### 5. Generate Go Code from SQL
+```bash
+sqlc generate
+```
+This generates three types of files:
+- Models: Go structs that map to database tables
+- `db.go`: Database interface
+- Query implementations (e.g., `account.sql.go`)
+
+## Go Module Setup
+
+### 1. Initialize Go Module
+```bash
+go mod init github.com/sajjadmurtaza/simple_bank
+```
+
+### 2. Download Dependencies
+```bash
+go mod tidy
+```
