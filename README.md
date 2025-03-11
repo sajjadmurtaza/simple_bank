@@ -147,3 +147,7 @@ go mod init github.com/sajjadmurtaza/simple_bank
 ```bash
 go mod tidy
 ```
+
+TODO
+Testing
+everyunit test case should start with Test prefix 

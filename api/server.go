@@ -1,0 +1,2 @@
+type Server struct {
+}
